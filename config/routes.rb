@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :todo_lists
+      resources :todo_lists do
+        resources :todo_items, shallow: true
+      end
+      resources :todo_items, only: [:index]
     end
   end
 end
